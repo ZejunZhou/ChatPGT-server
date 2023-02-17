@@ -36,30 +36,21 @@ app.post("/", (req, res) =>{
     const url = "https://us9.api.mailchimp.com/3.0/lists/f0b5823966";
     const options = {
         method:"POST",
-        auth: "zejun:99da2945c7d1c9cc72f55bd0815f6c5d-us9"
+        auth: "zejun:5067d75721e24de2ce2f144705c0c5eb-us9"
     }
     const request = https.request(url, options, function(response){
         response.on("data", function(data){
             //console.log(JSON.parse(data));
             if(response.statusCode == 200){
-                console.log("success");
+                console.log(response.statusCode);
+                console.log(__dirname + "/success.html");
+                res.sendFile(__dirname + "/success.html");
+            }else{
+                res.sendFile(__dirname + "/failure.html");
             }
         })
     })
-
-
-
-
     request.write(jsonData);
     request.end();
 
-
-
-    //console.log(first_name, last_name, email);
 })
-
-//List ID
-//f0b5823966
-
-//API key
-// 99da2945c7d1c9cc72f55bd0815f6c5d-us9
