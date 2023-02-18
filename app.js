@@ -9,7 +9,8 @@ app.use(express.static('public'));
 
 const https = require("https");
 
-app.listen("3000", ()=>{
+//adding dynamic port and local port
+app.listen(process.env.PORT || 3000, ()=>{
     console.log("server is on port 3000");
 })
 
