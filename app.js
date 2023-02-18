@@ -36,14 +36,14 @@ app.post("/", (req, res) =>{
     const url = "https://us9.api.mailchimp.com/3.0/lists/f0b5823966";
     const options = {
         method:"POST",
-        auth: "zejun:5067d75721e24de2ce2f144705c0c5eb-us9"
+        auth: "zejun:591160585cd78ab6ea40e5bc3e0db8b1-us9"
     }
     const request = https.request(url, options, function(response){
         response.on("data", function(data){
             //console.log(JSON.parse(data));
             if(response.statusCode == 200){
-                console.log(response.statusCode);
-                console.log(__dirname + "/success.html");
+                //console.log(response.statusCode);
+                //console.log(__dirname + "/success.html");
                 res.sendFile(__dirname + "/success.html");
             }else{
                 res.sendFile(__dirname + "/failure.html");
@@ -53,4 +53,8 @@ app.post("/", (req, res) =>{
     request.write(jsonData);
     request.end();
 
+})
+
+app.post("/failure", (req, res) =>{
+    res.redirect("/");
 })
